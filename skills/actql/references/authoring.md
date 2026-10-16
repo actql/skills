@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/authoring.md; do not edit. The published page is https://actql.com/docs/actql/guides/authoring -->
+<!-- Generated from actql/actql@d904416674e4 docs/authoring.md; do not edit. The published page is https://actql.com/docs/actql/guides/authoring -->
 # Writing Programs
 
 This guide is for anyone — a person or a coding agent — who writes ActQL

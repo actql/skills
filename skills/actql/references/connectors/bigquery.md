@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/connectors/bigquery.md; do not edit. The published page is https://actql.com/docs/actql/connectors/bigquery -->
+<!-- Generated from actql/actql@d904416674e4 docs/connectors/bigquery.md; do not edit. The published page is https://actql.com/docs/actql/connectors/bigquery -->
 # BigQuery
 
 The BigQuery Connector reads tables and views from a BigQuery dataset, writes

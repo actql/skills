@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/connectors/gcs.md; do not edit. The published page is https://actql.com/docs/actql/connectors/gcs -->
+<!-- Generated from actql/actql@d904416674e4 docs/connectors/gcs.md; do not edit. The published page is https://actql.com/docs/actql/connectors/gcs -->
 # Google Cloud Storage
 
 The Google Cloud Storage Connector lists objects in a bucket, reads their

@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/getting-started/quickstart.md; do not edit. The published page is https://actql.com/docs/actql/getting-started/quickstart -->
+<!-- Generated from actql/actql@d904416674e4 docs/getting-started/quickstart.md; do not edit. The published page is https://actql.com/docs/actql/getting-started/quickstart -->
 # Quickstart
 
 In ten minutes you will run a Program that reads accounts from Salesforce and

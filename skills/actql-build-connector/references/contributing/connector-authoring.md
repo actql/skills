@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/contributing/connector-authoring.md; do not edit. The published page is https://actql.com/docs/actql/contributing/connector-authoring -->
+<!-- Generated from actql/actql@d904416674e4 docs/contributing/connector-authoring.md; do not edit. The published page is https://actql.com/docs/actql/contributing/connector-authoring -->
 # Connector authoring in the repository
 
 How a Connector is added to the ActQL repository: where its code lives, what

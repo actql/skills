@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/reference/syntax.md; do not edit. The published page is https://actql.com/docs/actql/reference/syntax -->
+<!-- Generated from actql/actql@d904416674e4 docs/reference/syntax.md; do not edit. The published page is https://actql.com/docs/actql/reference/syntax -->
 # Syntax reference
 
 A Program is GoogleSQL with Pipe syntax. This page is the one place that

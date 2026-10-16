@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/guides/models.md; do not edit. The published page is https://actql.com/docs/actql/guides/models -->
+<!-- Generated from actql/actql@d904416674e4 docs/guides/models.md; do not edit. The published page is https://actql.com/docs/actql/guides/models -->
 # Models and INFER
 
 This page is for authors who want an LLM to judge, classify, extract or draft

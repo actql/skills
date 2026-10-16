@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/connectors/gmail.md; do not edit. The published page is https://actql.com/docs/actql/connectors/gmail -->
+<!-- Generated from actql/actql@d904416674e4 docs/connectors/gmail.md; do not edit. The published page is https://actql.com/docs/actql/connectors/gmail -->
 # Gmail
 
 The Gmail Connector reads messages, threads, labels, drafts and attachments

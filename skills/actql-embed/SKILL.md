@@ -4,7 +4,7 @@ description: "Embed the ActQL engine in a TypeScript/Node or Python application,
 license: Apache-2.0
 metadata:
   actql-docs-repo: actql/actql
-  actql-docs-ref: 747e5c2771ca7c0eb2c2f74238bc62a8abaa5509
+  actql-docs-ref: d904416674e43269d3b7ecf753051a72f27d0651
   actql-version: "0.1"
   actql-skills-version: "actql-skills/0.1"
 ---

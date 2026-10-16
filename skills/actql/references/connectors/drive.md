@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/connectors/drive.md; do not edit. The published page is https://actql.com/docs/actql/connectors/drive -->
+<!-- Generated from actql/actql@d904416674e4 docs/connectors/drive.md; do not edit. The published page is https://actql.com/docs/actql/connectors/drive -->
 # Google Drive
 
 The Google Drive Connector lists files and folders in a Drive, reads their

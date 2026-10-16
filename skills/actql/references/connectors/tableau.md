@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/connectors/tableau.md; do not edit. The published page is https://actql.com/docs/actql/connectors/tableau -->
+<!-- Generated from actql/actql@d904416674e4 docs/connectors/tableau.md; do not edit. The published page is https://actql.com/docs/actql/connectors/tableau -->
 # Tableau
 
 The Tableau Connector reads the catalog of a Tableau site — workbooks, data

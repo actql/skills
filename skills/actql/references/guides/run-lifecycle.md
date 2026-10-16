@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/guides/run-lifecycle.md; do not edit. The published page is https://actql.com/docs/actql/guides/run-lifecycle -->
+<!-- Generated from actql/actql@d904416674e4 docs/guides/run-lifecycle.md; do not edit. The published page is https://actql.com/docs/actql/guides/run-lifecycle -->
 # Run lifecycle and recovery
 
 This page is for anyone operating Runs: it shows the states a Run moves

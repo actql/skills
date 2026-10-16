@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/connectors/local-files.md; do not edit. The published page is https://actql.com/docs/actql/connectors/local-files -->
+<!-- Generated from actql/actql@d904416674e4 docs/connectors/local-files.md; do not edit. The published page is https://actql.com/docs/actql/connectors/local-files -->
 # Local files
 
 The Local files Connector reads CSV, Parquet, JSON-lines and Iceberg tables

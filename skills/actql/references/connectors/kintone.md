@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/connectors/kintone.md; do not edit. The published page is https://actql.com/docs/actql/connectors/kintone -->
+<!-- Generated from actql/actql@d904416674e4 docs/connectors/kintone.md; do not edit. The published page is https://actql.com/docs/actql/connectors/kintone -->
 # kintone
 
 The kintone Connector reads records, subtables and attachments from kintone

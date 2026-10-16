@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/connectors/calendar.md; do not edit. The published page is https://actql.com/docs/actql/connectors/calendar -->
+<!-- Generated from actql/actql@d904416674e4 docs/connectors/calendar.md; do not edit. The published page is https://actql.com/docs/actql/connectors/calendar -->
 # Google Calendar
 
 The Google Calendar Connector reads calendars, events and free/busy

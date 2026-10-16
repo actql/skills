@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@747e5c2771ca docs/guides/effects-and-approvals.md; do not edit. The published page is https://actql.com/docs/actql/guides/effects-and-approvals -->
+<!-- Generated from actql/actql@d904416674e4 docs/guides/effects-and-approvals.md; do not edit. The published page is https://actql.com/docs/actql/guides/effects-and-approvals -->
 # Effects and approvals
 
 This page is for authors who write Programs that change external systems and
