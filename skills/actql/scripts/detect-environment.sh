@@ -8,8 +8,10 @@ json_string() {
   printf '"'
   # Work on bytes so JSON controls are escaped without changing UTF-8 paths.
   # No Node/Python dependency: this also runs before either is installed.
-  printf '%s' "$1" | od -An -v -tu1 | while read -r -a json_octets; do
-    for json_byte in "${json_octets[@]}"; do
+  printf '%s' "$1" | od -An -v -tu1 | while read -r json_octets; do
+    # od emits only decimal octets and whitespace. Splitting these tokens also
+    # accepts its empty trailing line without a Bash 3.2 nounset array error.
+    for json_byte in $json_octets; do
       case "$json_byte" in
         34) printf '\\"' ;;
         92) printf '\\\\' ;;

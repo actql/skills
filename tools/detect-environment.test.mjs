@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
-import {chmodSync,mkdirSync,mkdtempSync,realpathSync,readFileSync,rmSync,writeFileSync} from 'node:fs';
+import {chmodSync,mkdirSync,mkdtempSync,realpathSync,readFileSync,rmSync,symlinkSync,writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {dirname,join,resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -17,7 +17,7 @@ function fixture(t,{name='project',versions={}}={}) {
   }
   const detect=()=>{
     const result=spawnSync('/bin/bash',[script],{cwd:directory,env:{PATH:bin+':/usr/bin:/bin',LANG:'C'},encoding:'utf8',timeout:5000});
-    assert.equal(result.error,undefined);assert.equal(result.signal,null);assert.equal(result.status,0,result.stderr);
+    assert.equal(result.error,undefined);assert.equal(result.signal,null);assert.equal(result.status,0,result.stderr);assert.equal(result.stderr,'');
     return {value:JSON.parse(result.stdout),raw:result.stdout};
   };
   return {root,directory,detect,put:(path,value)=>writeFileSync(join(directory,path),value)};
@@ -57,4 +57,14 @@ test('a directory with an aql suffix is not counted as a Program file',t=>{
 test('setup JSON represents every non-NUL ASCII control in a working directory',t=>{
   const controls=Array.from({length:31},(_,index)=>String.fromCharCode(index+1)).join('');
   const f=fixture(t,{name:'project-'+controls});assert.equal(f.detect().value.cwd,f.directory);
+});
+
+test('first setup needs no installed version tool or language runtime',t=>{
+  const f=fixture(t),minimal=join(f.root,'minimal');mkdirSync(minimal);
+  symlinkSync('/usr/bin/od',join(minimal,'od'));
+  const result=spawnSync('/bin/bash',[script],{cwd:f.directory,env:{PATH:minimal,LANG:'C'},encoding:'utf8',timeout:5000});
+  assert.equal(result.error,undefined);assert.equal(result.signal,null);assert.equal(result.status,0);assert.equal(result.stderr,'');
+  const value=JSON.parse(result.stdout);assert.equal(value.cwd,f.directory);
+  for(const field of ['actql_cli','node','npm','python','uv'])assert.equal(value[field],null);
+  assert.equal(value.project.aql_files,0);assert.equal(value.project.state_dir,false);
 });
