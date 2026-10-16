@@ -4,7 +4,31 @@
 set -u
 
 json_string() {
-  if [ -z "${1:-}" ]; then printf 'null'; else printf '"%s"' "$(printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g')"; fi
+  if [ -z "${1:-}" ]; then printf 'null'; return; fi
+  printf '"'
+  # Work on bytes so JSON controls are escaped without changing UTF-8 paths.
+  # No Node/Python dependency: this also runs before either is installed.
+  printf '%s' "$1" | od -An -v -tu1 | while read -r -a json_octets; do
+    for json_byte in "${json_octets[@]}"; do
+      case "$json_byte" in
+        34) printf '\\"' ;;
+        92) printf '\\\\' ;;
+        8) printf '\\b' ;;
+        9) printf '\\t' ;;
+        10) printf '\\n' ;;
+        12) printf '\\f' ;;
+        13) printf '\\r' ;;
+        *)
+          if [ "$json_byte" -lt 32 ]; then
+            printf '\\u%04x' "$json_byte"
+          else
+            printf -v json_octal '\\0%03o' "$json_byte"
+            printf '%b' "$json_octal"
+          fi ;;
+      esac
+    done
+  done
+  printf '"'
 }
 
 version_of() { "$@" 2>/dev/null | head -n 1 | tr -d '\r'; }
@@ -26,6 +50,13 @@ dep_in_pyproject() {
   [ -f pyproject.toml ] && grep -Eq "^[[:space:]]*\"?$1(\[|>|=|<|\"|[[:space:]]|$)" pyproject.toml && printf 'true' || printf 'false'
 }
 
+# Count filenames, not lines of ls output. Newlines in names are legal, and a
+# directory whose name ends in .aql is not a Program file.
+aql_files=0
+for aql_candidate in ./*.aql; do
+  if [ -f "$aql_candidate" ]; then aql_files=$((aql_files + 1)); fi
+done
+
 printf '{\n'
 printf '  "cwd": %s,\n' "$(json_string "$PWD")"
 printf '  "actql_cli": %s,\n' "$(json_string "$actql_version")"
@@ -39,7 +70,7 @@ printf '    "pyproject_toml": %s,\n' "$(has pyproject.toml)"
 printf '    "actql_config": %s,\n' "$(has actql.config.json)"
 printf '    "connectors_file": %s,\n' "$(has connectors.json)"
 printf '    "state_dir": %s,\n' "$(has .actql)"
-printf '    "aql_files": %s\n' "$(ls *.aql 2>/dev/null | wc -l | tr -d ' ')"
+printf '    "aql_files": %s\n' "$aql_files"
 printf '  },\n'
 printf '  "dependencies": {\n'
 printf '    "actql_node": %s,\n' "$(dep_in_package_json '@actql/node')"
