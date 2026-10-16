@@ -1,0 +1,83 @@
+{
+  "version": "actql-skills/0.1",
+  "docs": {
+    "repo": "actql/actql",
+    "site": "https://actql.com/docs/actql",
+    "license": "Apache-2.0"
+  },
+  "skills": [
+    {
+      "name": "actql",
+      "displayName": "ActQL",
+      "description": "Set up ActQL and write, check, explain and run ActQL Programs: GoogleSQL with Pipe syntax that reads SaaS APIs, warehouses and databases as one database, calls an LLM with INFER and writes back with an approved EFFECT. Use when the user mentions ActQL, .aql files, actql commands, joining Salesforce/Snowflake/HubSpot/Sheets-style systems with SQL, or asks to start ActQL setup, install actql, or run a Program with a Checkpoint.",
+      "allowImplicitInvocation": true,
+      "references": [
+        "docs/getting-started/install.md",
+        "docs/getting-started/quickstart.md",
+        "docs/authoring.md",
+        "docs/cli.md",
+        "docs/reference/syntax.md",
+        "docs/reference/sql-compatibility.md",
+        "docs/reference/types-and-functions.md",
+        "docs/reference/check-reasons.md",
+        "docs/reference/status.md",
+        "docs/reference/configuration.md",
+        "docs/guides/hosts.md",
+        "docs/guides/models.md",
+        "docs/guides/effects-and-approvals.md",
+        "docs/guides/run-lifecycle.md",
+        "docs/guides/plans-and-pushdown.md",
+        "docs/guides/debugging.md",
+        "docs/connectors/README.md",
+        "docs/connectors/snowflake.md",
+        "docs/connectors/bigquery.md",
+        "docs/connectors/duckdb.md",
+        "docs/connectors/salesforce.md",
+        "docs/connectors/hubspot.md",
+        "docs/connectors/notion.md",
+        "docs/connectors/kintone.md",
+        "docs/connectors/slack.md",
+        "docs/connectors/github.md",
+        "docs/connectors/tableau.md",
+        "docs/connectors/sheets.md",
+        "docs/connectors/drive.md",
+        "docs/connectors/gmail.md",
+        "docs/connectors/calendar.md",
+        "docs/connectors/gcs.md",
+        "docs/connectors/s3.md",
+        "docs/connectors/local-files.md"
+      ]
+    },
+    {
+      "name": "actql-embed",
+      "displayName": "Embed ActQL in an app",
+      "description": "Embed the ActQL engine in a TypeScript/Node or Python application, or call a remote ActQL Host or ActQL Cloud from code: connect, start a Program, wait for its state, decide Checkpoints in your own code, read Results. Use when the user is building an app, service or job that runs ActQL Programs with @actql/node, @actql/sdk, the actql Python package or actql-sdk, rather than driving ActQL from the CLI.",
+      "allowImplicitInvocation": true,
+      "references": [
+        "docs/guides/node.md",
+        "docs/guides/python.md",
+        "docs/guides/hosts.md",
+        "docs/guides/effects-and-approvals.md",
+        "docs/guides/run-lifecycle.md",
+        "docs/reference/configuration.md",
+        "docs/reference/status.md"
+      ]
+    },
+    {
+      "name": "actql-build-connector",
+      "displayName": "Build an ActQL Connector",
+      "description": "Design and implement a new ActQL Connector for a system ActQL does not ship with: its sources and keys, types, record Effects and operations, setup, pushdown Capabilities, Preview strength and reconciliation evidence, limits, and the Connector page. Use when the user wants ActQL to read or write a system that is not among the 17 built-in Connectors, or asks how Connectors are declared and tested.",
+      "allowImplicitInvocation": true,
+      "references": [
+        "docs/connectors/authoring.md",
+        "docs/connectors/README.md",
+        "docs/connectors/salesforce.md",
+        "docs/connectors/gcs.md",
+        "docs/contributing/connector-authoring.md",
+        "docs/contributing/README.md",
+        "docs/guides/effects-and-approvals.md",
+        "docs/reference/status.md"
+      ]
+    }
+  ]
+}

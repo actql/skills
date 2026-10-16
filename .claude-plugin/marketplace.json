@@ -1,0 +1,21 @@
+{
+  "name": "actql",
+  "owner": {
+    "name": "ActQL",
+    "url": "https://actql.com"
+  },
+  "metadata": {
+    "description": "Agent skills for ActQL: set up, write and run Programs, embed the engine, build Connectors.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "actql",
+      "source": "./",
+      "description": "Set up ActQL, write and run Programs with an approved write, embed the engine in an app, and build Connectors.",
+      "version": "0.1.0",
+      "category": "development",
+      "keywords": ["actql", "sql", "data", "workflow", "agents", "connectors"]
+    }
+  ]
+}

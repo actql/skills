@@ -1,0 +1,4 @@
+interface:
+  display_name: "ActQL"
+policy:
+  allow_implicit_invocation: true

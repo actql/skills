@@ -1,0 +1,13 @@
+{
+  "name": "actql",
+  "version": "0.1.0",
+  "description": "Set up ActQL, write and run Programs with an approved write, embed the engine in an app, and build Connectors.",
+  "author": {
+    "name": "ActQL",
+    "url": "https://actql.com"
+  },
+  "homepage": "https://actql.com/docs",
+  "repository": "https://github.com/actql/skills",
+  "license": "Apache-2.0",
+  "keywords": ["actql", "sql", "data", "workflow", "agents", "connectors"]
+}

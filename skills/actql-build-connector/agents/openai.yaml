@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build an ActQL Connector"
+policy:
+  allow_implicit_invocation: true
