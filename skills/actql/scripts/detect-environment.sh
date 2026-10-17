@@ -91,9 +91,15 @@ try:
     with open("pyproject.toml", "rb") as stream:
         value = tomllib.load(stream)
     project = value.get("project", {})
-    dependencies = project.get("dependencies", [])
-    if not isinstance(dependencies, list) or any(not isinstance(item, str) for item in dependencies):
+    optional = project.get("optional-dependencies", {})
+    if not isinstance(optional, dict):
         raise ValueError()
+    requirements = [project.get("dependencies", [])] + list(optional.values())
+    dependencies = []
+    for group in requirements:
+        if not isinstance(group, list) or any(not isinstance(item, str) for item in group):
+            raise ValueError()
+        dependencies.extend(group)
     normalize = lambda name: re.sub(r"[-_.]+", "-", name).lower()
     names = []
     for item in dependencies:
@@ -101,10 +107,16 @@ try:
         if name is None:
             raise ValueError()
         names.append(normalize(name[1]))
-    poetry = value.get("tool", {}).get("poetry", {}).get("dependencies", {})
-    if not isinstance(poetry, dict):
+    poetry = value.get("tool", {}).get("poetry", {})
+    groups = poetry.get("group", {})
+    if not isinstance(groups, dict):
         raise ValueError()
-    names.extend(normalize(name) for name in poetry)
+    tables = [poetry.get("dependencies", {}), poetry.get("dev-dependencies", {})]
+    tables.extend(group.get("dependencies", {}) for group in groups.values())
+    for table in tables:
+        if not isinstance(table, dict):
+            raise ValueError()
+        names.extend(normalize(name) for name in table)
     print("true" if normalize(sys.argv[1]) in names else "false")
 except (ImportError, OSError, ValueError, TypeError, AttributeError):
     print("null")

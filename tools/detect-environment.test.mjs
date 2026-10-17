@@ -132,3 +132,14 @@ test('a malformed dependency table is unknown on both actual JSON parser paths',
     assert.equal(value.dependencies.actql_node,null);assert.equal(value.dependencies.actql_sdk,null);
   }
 });
+
+
+test('PEP621 optional groups retain declared normalized package identities',t=>{
+  const f=fixture(t);f.put('pyproject.toml','[project]\noptional-dependencies = { dev = ["ActQL[cache]>=0.1", "actql_sdk @ https://example.invalid/sdk.whl"] }\n');
+  const d=f.detect().value.dependencies;assert.equal(d.actql_python,true);assert.equal(d.actql_sdk_python,true);
+});
+
+test('Poetry development and named groups are declarations without importing packages',t=>{
+  const f=fixture(t);f.put('pyproject.toml','[tool.poetry.dev-dependencies]\nactql_sdk = "*"\n[tool.poetry.group.dev.dependencies]\nactql = { version = "*", optional = true }\n');
+  const d=f.detect().value.dependencies;assert.equal(d.actql_python,true);assert.equal(d.actql_sdk_python,true);
+});
