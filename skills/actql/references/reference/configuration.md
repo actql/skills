@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/reference/configuration.md; do not edit. The published page is https://actql.com/docs/actql/reference/configuration -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/reference/configuration.md; do not edit. The published page is https://actql.com/docs/actql/reference/configuration -->
 # Configuration
 
 Every file and environment variable a Host reads, with its fields. This is

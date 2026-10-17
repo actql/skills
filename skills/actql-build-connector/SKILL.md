@@ -4,7 +4,7 @@ description: "Design and implement a new ActQL Connector for a system ActQL does
 license: Apache-2.0
 metadata:
   actql-docs-repo: actql/actql
-  actql-docs-ref: d904416674e43269d3b7ecf753051a72f27d0651
+  actql-docs-ref: 84d4ef5bff33130b1daec30d56527c4d5c1ef636
   actql-version: "0.1"
   actql-skills-version: "actql-skills/0.1"
 ---

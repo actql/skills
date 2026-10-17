@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/reference/sql-compatibility.md; do not edit. The published page is https://actql.com/docs/actql/reference/sql-compatibility -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/reference/sql-compatibility.md; do not edit. The published page is https://actql.com/docs/actql/reference/sql-compatibility -->
 # SQL compatibility
 
 ActQL's query text is GoogleSQL with Pipe syntax, extended for models, Effects

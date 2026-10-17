@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/guides/debugging.md; do not edit. The published page is https://actql.com/docs/actql/guides/debugging -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/guides/debugging.md; do not edit. The published page is https://actql.com/docs/actql/guides/debugging -->
 # Debugging and troubleshooting
 
 This page is for the moment something does not work: a Program is refused at

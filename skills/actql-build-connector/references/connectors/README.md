@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/connectors/README.md; do not edit. The published page is https://actql.com/docs/actql/connectors -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/connectors/README.md; do not edit. The published page is https://actql.com/docs/actql/connectors -->
 # Connectors
 
 A Connector connects ActQL to one external system. In a Program you only see

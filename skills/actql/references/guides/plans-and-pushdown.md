@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/guides/plans-and-pushdown.md; do not edit. The published page is https://actql.com/docs/actql/guides/plans-and-pushdown -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/guides/plans-and-pushdown.md; do not edit. The published page is https://actql.com/docs/actql/guides/plans-and-pushdown -->
 # Plans and pushdown
 
 This page is for authors who want to know where a Program's work will run and

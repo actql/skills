@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/connectors/github.md; do not edit. The published page is https://actql.com/docs/actql/connectors/github -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/connectors/github.md; do not edit. The published page is https://actql.com/docs/actql/connectors/github -->
 # GitHub
 
 The GitHub Connector reads issues, pull requests, comments, commits and files

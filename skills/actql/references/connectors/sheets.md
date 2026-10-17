@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/connectors/sheets.md; do not edit. The published page is https://actql.com/docs/actql/connectors/sheets -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/connectors/sheets.md; do not edit. The published page is https://actql.com/docs/actql/connectors/sheets -->
 # Google Sheets
 
 The Google Sheets Connector reads a declared range of a spreadsheet as a typed

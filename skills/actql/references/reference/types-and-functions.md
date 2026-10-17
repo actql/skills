@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/reference/types-and-functions.md; do not edit. The published page is https://actql.com/docs/actql/reference/types-and-functions -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/reference/types-and-functions.md; do not edit. The published page is https://actql.com/docs/actql/reference/types-and-functions -->
 # Types and functions
 
 The value types a Program works with, how parameters are declared, and the
