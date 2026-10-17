@@ -24,6 +24,9 @@ JSON object with the `actql` CLI version (or `null`), Node and Python
 versions, whether `package.json`, `pyproject.toml` and `actql.config.json`
 exist, and whether `@actql/node` or `actql` is already a dependency. Do not
 ask the user anything the output already answers.
+Dependency fields describe the manifest declarations, not a completed
+installation. `null` means the manifest could not be parsed with an available
+language tool; inspect it before deciding a dependency is missing.
 
 - `actql.config.json` exists and `actql` is installed: skip to Step 3.
 - `actql` is installed but there is no project: skip to Step 2.
