@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/connectors/slack.md; do not edit. The published page is https://actql.com/docs/actql/connectors/slack -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/connectors/slack.md; do not edit. The published page is https://actql.com/docs/actql/connectors/slack -->
 # Slack
 
 The Slack Connector reads channels, messages, users and files from a

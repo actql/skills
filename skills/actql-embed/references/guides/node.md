@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/guides/node.md; do not edit. The published page is https://actql.com/docs/actql/guides/node -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/guides/node.md; do not edit. The published page is https://actql.com/docs/actql/guides/node -->
 # TypeScript and Node
 
 `@actql/node` runs ActQL inside your application: no server, no daemon, the
