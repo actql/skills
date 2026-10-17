@@ -72,7 +72,7 @@ try {
   const value = JSON.parse(require("node:fs").readFileSync("package.json", "utf8"));
   if (value === null || typeof value !== "object" || Array.isArray(value)) throw Error();
   const tables = ["dependencies", "devDependencies", "optionalDependencies", "peerDependencies"]
-    .map(key => value[key] ?? {});
+    .map(key => Object.hasOwn(value, key) ? value[key] : {});
   if (tables.some(table => table === null || typeof table !== "object" || Array.isArray(table))) throw Error();
   console.log(tables.some(table => Object.hasOwn(table, process.argv[1])) ? "true" : "false");
 } catch { console.log("null"); }
@@ -102,6 +102,8 @@ try:
             raise ValueError()
         names.append(normalize(name[1]))
     poetry = value.get("tool", {}).get("poetry", {}).get("dependencies", {})
+    if not isinstance(poetry, dict):
+        raise ValueError()
     names.extend(normalize(name) for name in poetry)
     print("true" if normalize(sys.argv[1]) in names else "false")
 except (ImportError, OSError, ValueError, TypeError, AttributeError):

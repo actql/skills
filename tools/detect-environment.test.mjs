@@ -109,3 +109,26 @@ test('existing manifests remain unknown when no language parser is installed',t=
   assert.equal(result.error,undefined);assert.equal(result.status,0);assert.equal(result.stderr,'');
   assert.deepEqual(JSON.parse(result.stdout).dependencies,{actql_node:null,actql_sdk:null,actql_python:null,actql_sdk_python:null});
 });
+
+
+function nodeOnlyDetection(f) {
+  const minimal=join(f.root,'node-only');mkdirSync(minimal);
+  for(const command of ['od','head','tr'])symlinkSync('/usr/bin/'+command,join(minimal,command));
+  symlinkSync(process.execPath,join(minimal,'node'));
+  const result=spawnSync('/bin/bash',[script],{cwd:f.directory,env:{PATH:minimal,LANG:'C'},encoding:'utf8',timeout:5000});
+  assert.equal(result.error,undefined);assert.equal(result.status,0);assert.equal(result.stderr,'');
+  return JSON.parse(result.stdout);
+}
+
+test('the actual Node parser reads dependency tables when Python is absent',t=>{
+  const f=fixture(t);f.put('package.json',JSON.stringify({dependencies:{'@actql/node':'*'},scripts:{'@actql/sdk':'unrelated'}}));
+  const value=nodeOnlyDetection(f);assert.equal(value.python,null);
+  assert.deepEqual(value.dependencies,{actql_node:true,actql_sdk:false,actql_python:false,actql_sdk_python:false});
+});
+
+test('a malformed dependency table is unknown on both actual JSON parser paths',t=>{
+  const f=fixture(t);f.put('package.json','{"dependencies":null}');
+  for(const value of [f.detect().value,nodeOnlyDetection(f)]){
+    assert.equal(value.dependencies.actql_node,null);assert.equal(value.dependencies.actql_sdk,null);
+  }
+});
