@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/cli.md; do not edit. The published page is https://actql.com/docs/actql/guides/cli -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/cli.md; do not edit. The published page is https://actql.com/docs/actql/guides/cli -->
 # CLI reference
 
 `actql` drives Programs from the command line: check them, see their plan, run

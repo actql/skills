@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/connectors/duckdb.md; do not edit. The published page is https://actql.com/docs/actql/connectors/duckdb -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/connectors/duckdb.md; do not edit. The published page is https://actql.com/docs/actql/connectors/duckdb -->
 # DuckDB
 
 The DuckDB Connector reads and writes tables in a DuckDB database file and
