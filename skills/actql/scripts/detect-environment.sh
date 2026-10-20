@@ -4,7 +4,27 @@
 set -u
 
 json_string() {
-  if [ -z "${1:-}" ]; then printf 'null'; else printf '"%s"' "$(printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g')"; fi
+  if [ -z "${1:-}" ]; then printf 'null'; return; fi
+  # Quote control bytes without requiring Node or Python before discovery.
+  # Non-ASCII UTF-8 bytes pass through unchanged, regardless of the caller locale.
+  local LC_ALL=C value="$1" character code index
+  printf '"'
+  for ((index = 0; index < ${#value}; index++)); do
+    character="${value:index:1}"
+    case "$character" in
+      '"') printf '\\"' ;;
+      '\') printf '\\\\' ;;
+      *)
+        printf -v code '%d' "'$character"
+        if [ "$code" -ge 0 ] && [ "$code" -lt 32 ]; then
+          printf '\\u%04x' "$code"
+        else
+          printf '%s' "$character"
+        fi
+        ;;
+    esac
+  done
+  printf '"'
 }
 
 version_of() { "$@" 2>/dev/null | head -n 1 | tr -d '\r'; }
@@ -26,6 +46,14 @@ dep_in_pyproject() {
   [ -f pyproject.toml ] && grep -Eq "^[[:space:]]*\"?$1(\[|>|=|<|\"|[[:space:]]|$)" pyproject.toml && printf 'true' || printf 'false'
 }
 
+aql_file_count() {
+  local count=0 path
+  for path in ./*.aql; do
+    if [ -f "$path" ]; then count=$((count + 1)); fi
+  done
+  printf '%s' "$count"
+}
+
 printf '{\n'
 printf '  "cwd": %s,\n' "$(json_string "$PWD")"
 printf '  "actql_cli": %s,\n' "$(json_string "$actql_version")"
@@ -39,7 +67,7 @@ printf '    "pyproject_toml": %s,\n' "$(has pyproject.toml)"
 printf '    "actql_config": %s,\n' "$(has actql.config.json)"
 printf '    "connectors_file": %s,\n' "$(has connectors.json)"
 printf '    "state_dir": %s,\n' "$(has .actql)"
-printf '    "aql_files": %s\n' "$(ls *.aql 2>/dev/null | wc -l | tr -d ' ')"
+printf '    "aql_files": %s\n' "$(aql_file_count)"
 printf '  },\n'
 printf '  "dependencies": {\n'
 printf '    "actql_node": %s,\n' "$(dep_in_package_json '@actql/node')"
