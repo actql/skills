@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {spawnSync} from 'node:child_process';
+import {execFileSync,spawnSync} from 'node:child_process';
 import {chmodSync,mkdirSync,mkdtempSync,realpathSync,readFileSync,rmSync,symlinkSync,writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {dirname,join,resolve} from 'node:path';
@@ -7,7 +7,11 @@ import {fileURLToPath} from 'node:url';
 import test from 'node:test';
 
 const script=resolve(dirname(fileURLToPath(import.meta.url)),'../skills/actql/scripts/detect-environment.sh');
-const python=process.env.ACTQL_TEST_SKILL_PYTHON??'python3';
+// Resolve before fixture PATH isolation: forwarding to the bare name would
+// re-enter the fixture's own python3 wrapper for every manifest parse.
+const python=process.env.ACTQL_TEST_SKILL_PYTHON??JSON.parse(execFileSync('python3',
+  ['-c','import json, sys; print(json.dumps(sys.executable))'],
+  {encoding:'utf8',timeout:5000}));
 const quote=value=>"'"+value.replaceAll("'","'\\''")+"'";
 function fixture(t,{name='project',versions={}}={}) {
   const root=realpathSync(mkdtempSync(join(tmpdir(),'actql-skill-detection-')));
