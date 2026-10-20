@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {spawnSync} from 'node:child_process';
+import {execFileSync,spawnSync} from 'node:child_process';
 import {chmodSync,mkdirSync,mkdtempSync,realpathSync,readFileSync,rmSync,symlinkSync,writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {dirname,join,resolve} from 'node:path';
@@ -7,7 +7,11 @@ import {fileURLToPath} from 'node:url';
 import test from 'node:test';
 
 const script=resolve(dirname(fileURLToPath(import.meta.url)),'../skills/actql/scripts/detect-environment.sh');
-const python=process.env.ACTQL_TEST_SKILL_PYTHON??'python3';
+// Resolve before fixture PATH isolation: forwarding to the bare name would
+// re-enter the fixture's own python3 wrapper for every manifest parse.
+const python=process.env.ACTQL_TEST_SKILL_PYTHON??JSON.parse(execFileSync('python3',
+  ['-c','import json, sys; print(json.dumps(sys.executable))'],
+  {encoding:'utf8',timeout:5000}));
 const quote=value=>"'"+value.replaceAll("'","'\\''")+"'";
 function fixture(t,{name='project',versions={}}={}) {
   const root=realpathSync(mkdtempSync(join(tmpdir(),'actql-skill-detection-')));
@@ -142,4 +146,48 @@ test('PEP621 optional groups retain declared normalized package identities',t=>{
 test('Poetry development and named groups are declarations without importing packages',t=>{
   const f=fixture(t);f.put('pyproject.toml','[tool.poetry.dev-dependencies]\nactql_sdk = "*"\n[tool.poetry.group.dev.dependencies]\nactql = { version = "*", optional = true }\n');
   const d=f.detect().value.dependencies;assert.equal(d.actql_python,true);assert.equal(d.actql_sdk_python,true);
+});
+
+
+// Exercise combined directory, version and dependency discovery with the same parsers.
+test('setup discovery returns exact JSON strings for ordinary directory and version metadata', t => {
+  const name = 'project "quoted" \\ 日本語\nline\twith\u0007control';
+  const cli = 'ActQL "fixture" \\ 日本語\t\u0007';
+  const f = fixture(t, {name, versions: {actql: cli}});
+  const actual = f.detect().value;
+  assert.equal(actual.cwd, f.directory);
+  assert.equal(actual.actql_cli, cli);
+  assert.equal(actual.node, 'v22.22.0');
+  assert.equal(actual.python, 'Python 3.13.11');
+});
+
+test('setup discovery counts actual aql files rather than lines or directory contents', t => {
+  const f = fixture(t);
+  f.put('first\ncontinued.aql', 'SELECT 1;\n');
+  f.put('second.aql', 'SELECT 2;\n');
+  mkdirSync(join(f.directory, 'folder.aql'));
+  writeFileSync(join(f.directory, 'folder.aql', 'not-a-program'), 'metadata');
+  assert.equal(f.detect().value.project.aql_files, 2);
+});
+
+test('setup discovery keeps absent CLI, project flags and dependency metadata separate', t => {
+  const f = fixture(t);
+  rmSync(join(f.root, 'bin', 'actql'));
+  const empty = f.detect().value;
+  assert.equal(empty.actql_cli, null);
+  assert.deepEqual(empty.project, {
+    package_json: false, pyproject_toml: false, actql_config: false,
+    connectors_file: false, state_dir: false, aql_files: 0,
+  });
+  f.put('package.json', JSON.stringify({dependencies: {'@actql/node': '0.1.0'}}));
+  f.put('pyproject.toml', '[project]\ndependencies = [\n  "actql-sdk>=0.1"\n]\n');
+  f.put('actql.config.json', '{}\n');
+  const actual = f.detect().value;
+  assert.equal(actual.project.package_json, true);
+  assert.equal(actual.project.pyproject_toml, true);
+  assert.equal(actual.project.actql_config, true);
+  assert.equal(actual.project.state_dir, false);
+  assert.deepEqual(actual.dependencies, {
+    actql_node: true, actql_sdk: false, actql_python: false, actql_sdk_python: true,
+  });
 });

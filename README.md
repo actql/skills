@@ -49,6 +49,8 @@ node tools/build.mjs --docs ../actql            # rebuild from a checkout of act
 node tools/build.mjs --docs ../actql --check    # verify nothing is stale
 ```
 
+Run the setup helper's boundary tests with `node --test tools/detect-environment.test.mjs`.
+
 `skills.json` lists each skill, its description and the documentation pages
 it carries. The generated front matter records the documentation commit the
 references came from (`metadata.actql-docs-ref`).
