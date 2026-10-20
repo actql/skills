@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/reference/status.md; do not edit. The published page is https://actql.com/docs/actql/reference/status -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/reference/status.md; do not edit. The published page is https://actql.com/docs/actql/reference/status -->
 # Implementation status
 
 This is the one page that describes what is implemented today. Every other

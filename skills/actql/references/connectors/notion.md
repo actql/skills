@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/connectors/notion.md; do not edit. The published page is https://actql.com/docs/actql/connectors/notion -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/connectors/notion.md; do not edit. The published page is https://actql.com/docs/actql/connectors/notion -->
 # Notion
 
 The Notion Connector reads databases, pages and page content from a workspace,

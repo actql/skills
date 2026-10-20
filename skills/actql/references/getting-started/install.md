@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/getting-started/install.md; do not edit. The published page is https://actql.com/docs/actql/getting-started/install -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/getting-started/install.md; do not edit. The published page is https://actql.com/docs/actql/getting-started/install -->
 # Install
 
 ActQL lets you work with the systems you connect — a CRM, a warehouse, files,

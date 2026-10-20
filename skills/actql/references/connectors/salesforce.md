@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/connectors/salesforce.md; do not edit. The published page is https://actql.com/docs/actql/connectors/salesforce -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/connectors/salesforce.md; do not edit. The published page is https://actql.com/docs/actql/connectors/salesforce -->
 # Salesforce
 
 The Salesforce Connector reads standard and custom objects and files from a

@@ -4,7 +4,7 @@ description: "Set up ActQL and write, check, explain and run ActQL Programs: Goo
 license: Apache-2.0
 metadata:
   actql-docs-repo: actql/actql
-  actql-docs-ref: d904416674e43269d3b7ecf753051a72f27d0651
+  actql-docs-ref: 84d4ef5bff33130b1daec30d56527c4d5c1ef636
   actql-version: "0.1"
   actql-skills-version: "actql-skills/0.1"
 ---
@@ -24,6 +24,9 @@ JSON object with the `actql` CLI version (or `null`), Node and Python
 versions, whether `package.json`, `pyproject.toml` and `actql.config.json`
 exist, and whether `@actql/node` or `actql` is already a dependency. Do not
 ask the user anything the output already answers.
+Dependency fields describe the manifest declarations, not a completed
+installation. `null` means the manifest could not be parsed with an available
+language tool; inspect it before deciding a dependency is missing.
 
 - `actql.config.json` exists and `actql` is installed: skip to Step 3.
 - `actql` is installed but there is no project: skip to Step 2.

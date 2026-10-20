@@ -1,4 +1,4 @@
-<!-- Generated from actql/actql@d904416674e4 docs/contributing/README.md; do not edit. The published page is https://actql.com/docs/actql/contributing -->
+<!-- Generated from actql/actql@84d4ef5bff33 docs/contributing/README.md; do not edit. The published page is https://actql.com/docs/actql/contributing -->
 # Development
 
 How to set up a checkout of ActQL, build it, run the tests that matter for a
@@ -104,7 +104,7 @@ they executed.
 
 The packed client packages (`actql`, `@actql/node`, `@actql/sdk`) are built
 from the checkout with the scripts under `scripts/`; see
-[Building from source](https://github.com/actql/actql/blob/d904416674e43269d3b7ecf753051a72f27d0651/docs/development.md) for the exact commands and the
+[Building from source](https://github.com/actql/actql/blob/84d4ef5bff33130b1daec30d56527c4d5c1ef636/docs/development.md) for the exact commands and the
 artifact rules. Installing a release is documented in
 [Install](https://actql.com/docs/actql/getting-started/install).
 
